@@ -39,7 +39,8 @@ object ToggleAnimation {
         view.requestLayout()
       }
     }
-    animation.duration = (actualHeight / view.context.resources.displayMetrics.density).toLong()
+    // animation.duration = (actualHeight / view.context.resources.displayMetrics.density).toLong()
+    animation.duration = 200
 
     return animation
   }
@@ -62,7 +63,8 @@ object ToggleAnimation {
         }
       }
     }
-    animation.duration = (actualHeight / view.context.resources.displayMetrics.density).toLong()
+    // animation.duration = (actualHeight / view.context.resources.displayMetrics.density).toLong()
+    animation.duration = 200
 
     return animation
   }
