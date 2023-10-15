@@ -78,7 +78,9 @@ fun NoticeCard(
                     overflow = TextOverflow.Ellipsis
                 )
                 IconButton(
-                    modifier = Modifier.rotate(rotationState),
+                    modifier = Modifier
+                        .padding(start = 16.dp)
+                        .rotate(rotationState),
                     onClick = { expandedState = !expandedState }
                 ) {
                     val image = painterResource(
