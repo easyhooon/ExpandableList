@@ -1,10 +1,3 @@
-/*
- * Designed and developed by Wedemy 2023.
- *
- * Licensed under the MIT.
- * Please see full license: https://github.com/Wedemy/eggeum-android/blob/main/LICENSE
- */
-
 package com.kenshi.expandablelist.view
 
 import android.view.View
@@ -20,8 +13,7 @@ class NoticeViewHolder(val binding: ItemNoticeBinding) : RecyclerView.ViewHolder
       tvNoticeDate.text = notice.date
       tvNoticeDescription.text = notice.description
       clNotice.setOnClickListener {
-        val show = toggleLayout(!notice.isExpanded, ivNoticeExpand, llLayoutExpand)
-        notice.isExpanded = show
+        notice.isExpanded = toggleLayout(!notice.isExpanded, ivNoticeExpand, llLayoutExpand)
       }
     }
   }

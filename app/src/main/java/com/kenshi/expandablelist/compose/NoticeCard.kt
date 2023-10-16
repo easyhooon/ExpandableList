@@ -1,7 +1,11 @@
 package com.kenshi.expandablelist.compose
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -84,27 +88,27 @@ fun NoticeCard(
                     )
                 }
             }
-            AnimatedVisibility(visible = expandedState) {
-                ExpandedContent(
-                    date = date,
-                    description = description
-                )
-            }
-//            // add optional animation
-//            AnimatedVisibility(
-//                visible = expandedState,
-//                enter = fadeIn() + expandVertically(
-//                    animationSpec = spring(
-//                        dampingRatio = Spring.DampingRatioMediumBouncy,
-//                        stiffness = Spring.StiffnessLow
-//                    )
-//                )
-//            ) {
+//            AnimatedVisibility(visible = expandedState) {
 //                ExpandedContent(
 //                    date = date,
 //                    description = description
 //                )
 //            }
+            // add optional animation
+            AnimatedVisibility(
+                visible = expandedState,
+                enter = fadeIn() + expandVertically(
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioMediumBouncy,
+                        stiffness = Spring.StiffnessLow
+                    )
+                )
+            ) {
+                ExpandedContent(
+                    date = date,
+                    description = description
+                )
+            }
         }
     }
 }
