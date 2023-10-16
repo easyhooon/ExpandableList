@@ -1,9 +1,8 @@
 package com.kenshi.expandablelist.compose
 
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -49,12 +48,6 @@ fun NoticeCard(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .animateContentSize(
-                animationSpec = tween(
-                    delayMillis = 200,
-                    easing = LinearEasing
-                )
-            )
             .noRippleClickable {
                 expandedState = !expandedState
             }
@@ -64,8 +57,8 @@ fun NoticeCard(
                 modifier = Modifier.padding(
                     start = 16.dp,
                     end = 16.dp,
-                    top = 18.dp,
-                    bottom = 18.dp
+                    top = 9.dp,
+                    bottom = 9.dp
                 ),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
@@ -92,30 +85,50 @@ fun NoticeCard(
                     )
                 }
             }
-            if (expandedState) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(color = Gray50)
-                        .padding(start = 16.dp, end = 16.dp, top = 10.dp, bottom = 18.dp)
-                ) {
-                    Text(
-                        text = date,
-                        color = Gray400,
-                        style = TextXsRegular,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Spacer(modifier = Modifier.height(18.dp))
-                    Text(
-                        text = description,
-                        color = Gray500,
-                        style = TextMRegular,
-                        maxLines = 4,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
+            AnimatedVisibility(
+                visible = expandedState,
+                enter = expandVertically()
+//                // add optional animation
+//                enter = fadeIn() + expandVertically(
+//                    animationSpec = spring(
+//                        dampingRatio = Spring.DampingRatioMediumBouncy,
+//                        stiffness = Spring.StiffnessLow
+//                    )
+//                )
+            ) {
+                ExpandedContent(
+                    date = date,
+                    description = description
+                )
             }
         }
+    }
+}
+
+@Composable
+fun ExpandedContent(
+    modifier: Modifier = Modifier,
+    date: String,
+    description: String
+) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(color = Gray50)
+            .padding(start = 16.dp, end = 16.dp, top = 10.dp, bottom = 18.dp)
+    ) {
+        Text(
+            text = date,
+            color = Gray400,
+            style = TextXsRegular,
+        )
+        Spacer(modifier = Modifier.height(18.dp))
+        Text(
+            text = description,
+            color = Gray500,
+            style = TextMRegular,
+            maxLines = 4,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
