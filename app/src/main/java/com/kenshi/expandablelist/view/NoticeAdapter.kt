@@ -10,7 +10,13 @@ class NoticeAdapter(private var noticeList: List<NoticeItem>) :
     RecyclerView.Adapter<NoticeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        NoticeViewHolder(ItemNoticeBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        NoticeViewHolder(
+            ItemNoticeBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: NoticeViewHolder, position: Int) {
         holder.bind(noticeList[position])

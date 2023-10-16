@@ -26,7 +26,8 @@ class ViewActivity : AppCompatActivity() {
         binding.rvNotice.apply {
             adapter = noticeAdapter
             val colorDrawable = ColorDrawable(ContextCompat.getColor(context, R.color.gray_300))
-            val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            val dividerItemDecoration =
+                DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
             dividerItemDecoration.setDrawable(colorDrawable)
             addItemDecoration(dividerItemDecoration)
         }
