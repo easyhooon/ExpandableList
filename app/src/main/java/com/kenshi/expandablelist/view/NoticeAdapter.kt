@@ -1,6 +1,7 @@
 package com.kenshi.expandablelist.view
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kenshi.expandablelist.NoticeItem
@@ -19,8 +20,25 @@ class NoticeAdapter(private var noticeList: List<NoticeItem>) :
         )
 
     override fun onBindViewHolder(holder: NoticeViewHolder, position: Int) {
-        holder.bind(noticeList[position])
+        val notice = noticeList[position]
+        holder.bind(notice)
+
+        with(holder.binding) {
+            clNotice.setOnClickListener {
+                notice.isExpanded = !notice.isExpanded
+                toggleLayout(notice.isExpanded, ivNoticeExpand)
+                notifyItemChanged(position)
+            }
+        }
     }
 
     override fun getItemCount() = noticeList.size
+
+    private fun toggleLayout(isExpanded: Boolean, view: View) {
+        if (isExpanded) {
+            view.animate().setDuration(200).rotation(180f)
+        } else {
+            view.animate().setDuration(200).rotation(0f)
+        }
+    }
 }
