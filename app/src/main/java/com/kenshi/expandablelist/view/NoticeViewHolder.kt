@@ -6,10 +6,7 @@ import com.kenshi.expandablelist.NoticeItem
 import com.kenshi.expandablelist.databinding.ItemNoticeBinding
 
 class NoticeViewHolder(val binding: ItemNoticeBinding) : RecyclerView.ViewHolder(binding.root) {
-    private var currentItem: NoticeItem? = null
-
     fun bind(notice: NoticeItem) {
-        currentItem = notice
         binding.apply {
             tvNoticeTitle.text = notice.title
             tvNoticeDate.text = notice.date
