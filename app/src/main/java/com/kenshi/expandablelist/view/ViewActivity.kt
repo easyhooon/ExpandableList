@@ -1,12 +1,10 @@
 package com.kenshi.expandablelist.view
 
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DividerItemDecoration
 import com.kenshi.expandablelist.Notices.notices
 import com.kenshi.expandablelist.R
+import com.kenshi.expandablelist.compose.extension.addDivider
 import com.kenshi.expandablelist.databinding.ActivityViewBinding
 
 class ViewActivity : AppCompatActivity() {
@@ -25,11 +23,7 @@ class ViewActivity : AppCompatActivity() {
     private fun initView() {
         binding.rvNotice.apply {
             adapter = noticeAdapter
-            val colorDrawable = ColorDrawable(ContextCompat.getColor(context, R.color.gray_300))
-            val dividerItemDecoration =
-                DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-            dividerItemDecoration.setDrawable(colorDrawable)
-            addItemDecoration(dividerItemDecoration)
+            addDivider(R.color.gray_300)
         }
     }
 }

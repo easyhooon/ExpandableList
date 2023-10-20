@@ -8,7 +8,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Surface
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import com.kenshi.expandablelist.Notices.notices
 import com.kenshi.expandablelist.compose.ui.theme.ExpandableListTheme
 import com.kenshi.expandablelist.compose.ui.theme.Gray300
@@ -27,7 +26,7 @@ class ComposeActivity : ComponentActivity() {
                                 description = notices[index].description
                             )
                             if (index < notices.lastIndex)
-                                Divider(color = Gray300, thickness = 1.dp)
+                                Divider(color = Gray300)
                         }
                     }
                 }
